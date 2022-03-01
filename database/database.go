@@ -18,8 +18,6 @@ func Connect() {
 	dbPort := os.Getenv("DB_PORT")
 	portInt, err := strconv.Atoi(dbPort)
 
-	fmt.Println(dbPort)
-
 	if err != nil {
 		log.Fatal("invalid port")
 	}
@@ -38,6 +36,8 @@ func Connect() {
 	if err != nil {
 		log.Fatal("could not open test DB")
 	} else {
+		migrateDB(DB)
+
 		log.Println("Database connection established")
 	}
 }

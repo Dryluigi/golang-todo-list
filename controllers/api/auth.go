@@ -24,6 +24,7 @@ func AuthLogin(w http.ResponseWriter, r *http.Request) {
 
 	if err != nil && err == auth.ErrInvalidCredential {
 		response.BuildSuccessResponse(w, http.StatusOK, "Invalid Credential", false, nil)
+		return
 	}
 
 	if err != nil {
